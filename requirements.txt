@@ -1,16 +1,10 @@
-# Streamlit App Dependencies
 streamlit
 numpy
 opencv-python
 tensorflow
 Pillow
-
-# Jupyter Notebook + ML + Visualization
 matplotlib
 seaborn
 pandas
 scikit-learn
-jupyter
-
-# TensorBoard for training monitoring
 tensorboard
