@@ -67,7 +67,7 @@ A Convolutional Neural Network implementation for recognizing handwritten digits
                                   ┌─────────────────────────────┐
                                   │      Model Training         │
                                   │  • Optimizer: Adam          │
-                                  │  • Loss: CrossEntropy       │
+                                  │  • Loss: SparseCrossEntropy │
                                   │  • Epochs: 10               │
                                   │  • Batch Size: 32           │
                                   └──────────────┬──────────────┘
@@ -87,7 +87,6 @@ A Convolutional Neural Network implementation for recognizing handwritten digits
                                   ┌─────────────────────────────┐
                                   │        Final Model          │
                                   │    Test Accuracy: 98.8%     │
-                                  │    Ready for Deployment     │
                                   └─────────────────────────────┘                                                                                        
 ```
 
