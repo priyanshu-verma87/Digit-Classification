@@ -12,82 +12,82 @@ A Convolutional Neural Network implementation for recognizing handwritten digits
 ## Complete Pipeline Flow
 
 ```
-┌─────────────────┐
-│   MNIST Dataset │
-│  70,000 images  │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐     ┌─────────────────┐
-│ Training Data   │     │   Test Data     │
-│ 60,000 images   │     │ 10,000 images   │
-└────────┬────────┘     └─────────────────┘
-         │
-         ▼
-┌─────────────────────────────┐
-│     Train-Val Split         │
-│  ┌──────────┬─────────────┐ │
-│  │ Training │ Validation  │ │
-│  │  42,000  │   18,000    │ │
-│  └──────────┴─────────────┘ │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│    Data Preprocessing       │
-│  • Normalization (÷255)     │
-│  • Reshape (28,28,1)        │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│      Model Building         │
-│  ┌─────────────────────┐    │
-│  │ Input (28×28×1)     │    │
-│  ├─────────────────────┤    │
-│  │ Conv2D (8 filters)  │    │
-│  ├─────────────────────┤    │
-│  │ MaxPooling2D (2×2)  │    │
-│  ├─────────────────────┤    │
-│  │ Conv2D (16 filters) │    │
-│  ├─────────────────────┤    │
-│  │ MaxPooling2D (2×2)  │    │
-│  ├─────────────────────┤    │
-│  │ Flatten             │    │
-│  ├─────────────────────┤    │
-│  │ Dense (128)         │    │
-│  ├─────────────────────┤    │
-│  │ Dropout (0.2)       │    │
-│  ├─────────────────────┤    │
-│  │ Dense (10)          │    │
-│  └─────────────────────┘    │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│      Model Training         │
-│  • Optimizer: Adam          │
-│  • Loss: Sparse CrossEntropy│
-│  • Epochs: 10               │
-│  • Batch Size: 32           │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│      Model Evaluation       │
-│  ┌───────────────────────┐  │
-│  │ • Training Curves     │  │
-│  │ • Confusion Matrix    │  │
-│  │ • Accuracy Metrics    │  │
-│  │ • Sample Predictions  │  │
-│  └───────────────────────┘  │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│        Final Model          │
-│    Test Accuracy: 98.8%     │
-└─────────────────────────────┘
+                                                                                          ┌─────────────────┐
+                                                                                          │   MNIST Dataset │
+                                                                                          │  70,000 images  │
+                                                                                          └────────┬────────┘
+                                                                                                   │
+                                                                                                   ▼
+                                                                                          ┌─────────────────┐     ┌─────────────────┐
+                                                                                          │ Training Data   │     │   Test Data     │
+                                                                                          │ 60,000 images   │     │ 10,000 images   │
+                                                                                          └────────┬────────┘     └─────────────────┘
+                                                                                                   │
+                                                                                                   ▼
+                                                                                          ┌─────────────────────────────┐
+                                                                                          │     Train-Val Split         │
+                                                                                          │  ┌──────────┬─────────────┐ │
+                                                                                          │  │ Training │ Validation  │ │
+                                                                                          │  │  42,000  │   18,000    │ │
+                                                                                          │  └──────────┴─────────────┘ │
+                                                                                          └──────────────┬──────────────┘
+                                                                                                         │
+                                                                                                         ▼
+                                                                                          ┌─────────────────────────────┐
+                                                                                          │    Data Preprocessing       │
+                                                                                          │  • Normalization (÷255)     │
+                                                                                          │  • Reshape (28,28,1)        │
+                                                                                          └──────────────┬──────────────┘
+                                                                                                         │
+                                                                                                         ▼
+                                                                                          ┌─────────────────────────────┐
+                                                                                          │      Model Building         │
+                                                                                          │  ┌─────────────────────┐    │
+                                                                                          │  │ Input (28×28×1)     │    │
+                                                                                          │  ├─────────────────────┤    │
+                                                                                          │  │ Conv2D (8 filters)  │    │
+                                                                                          │  ├─────────────────────┤    │
+                                                                                          │  │ MaxPooling2D (2×2)  │    │
+                                                                                          │  ├─────────────────────┤    │
+                                                                                          │  │ Conv2D (16 filters) │    │
+                                                                                          │  ├─────────────────────┤    │
+                                                                                          │  │ MaxPooling2D (2×2)  │    │
+                                                                                          │  ├─────────────────────┤    │
+                                                                                          │  │ Flatten             │    │
+                                                                                          │  ├─────────────────────┤    │
+                                                                                          │  │ Dense (128)         │    │
+                                                                                          │  ├─────────────────────┤    │
+                                                                                          │  │ Dropout (0.2)       │    │
+                                                                                          │  ├─────────────────────┤    │
+                                                                                          │  │ Dense (10)          │    │
+                                                                                          │  └─────────────────────┘    │
+                                                                                          └──────────────┬──────────────┘
+                                                                                                         │
+                                                                                                         ▼
+                                                                                          ┌─────────────────────────────┐
+                                                                                          │      Model Training         │
+                                                                                          │  • Optimizer: Adam          │
+                                                                                          │  • Loss: Sparse CrossEntropy│
+                                                                                          │  • Epochs: 10               │
+                                                                                          │  • Batch Size: 32           │
+                                                                                          └──────────────┬──────────────┘
+                                                                                                         │
+                                                                                                         ▼
+                                                                                          ┌─────────────────────────────┐
+                                                                                          │      Model Evaluation       │
+                                                                                          │  ┌───────────────────────┐  │
+                                                                                          │  │ • Training Curves     │  │
+                                                                                          │  │ • Confusion Matrix    │  │
+                                                                                          │  │ • Accuracy Metrics    │  │
+                                                                                          │  │ • Sample Predictions  │  │
+                                                                                          │  └───────────────────────┘  │
+                                                                                          └──────────────┬──────────────┘
+                                                                                                         │
+                                                                                                         ▼
+                                                                                          ┌─────────────────────────────┐
+                                                                                          │        Final Model          │
+                                                                                          │    Test Accuracy: 98.8%     │
+                                                                                          └─────────────────────────────┘
 ```
 
 ## Detailed Process Flow
@@ -132,6 +132,8 @@ The CNN architecture consists of:
 - **Test Accuracy**: 98.8%
 - Confusion matrix reveals common misclassifications (4↔9, 3↔5)
 - Visualizations show model performance and prediction samples
+  ![image](https://github.com/user-attachments/assets/aa456e45-b009-4c22-9aaf-75662aaadb0c)
+
 
 ## Key Results
 
